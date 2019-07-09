@@ -14,13 +14,13 @@ char pow(char a, ll p) {
 }
 
 StringHash::StringHash(const string &_siteName) {siteName = _siteName;
-	ifstream fin("/home/kirill/password.txt");
-	fin >> secretWord >> hashNum;
+	ifstream fin("./password.txt");
+	string spec;
+	fin >> secretWord >> hashNum >> spec;
 	fin.close();
+	forEach(spec) special.pb(it);
 	for (char c = 'a'; c <= 'z'; c++) symb.pb(c);
 	for (char c = 'A'; c <= 'Z'; c++) symb.pb(c);
-	string special_symbols = "{}[]#$%+=@!?/'";
-	for (ll i = 0; i < 3; i++) forEach(special_symbols) symb.pb(it);
 	//random_shuffle(all(symb));
 }
 
@@ -32,7 +32,13 @@ string StringHash::password() {
 	for (ll i = 0; i < ans.size(); i++) {
 		ans[i] = hash(ans[i], i);
 	}
-	forEach(ans) it = symb[it % symb.size()];
+	forEach(ans) {
+		if (it % 2 == 0) {
+			it = symb[(it / 2) % symb.size()];
+		} else {
+			it = special[(it / 2) % special.size()];
+		}
+	}
 	return ans;
 }
 

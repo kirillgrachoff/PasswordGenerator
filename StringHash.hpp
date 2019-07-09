@@ -20,6 +20,7 @@ class StringHash {
 	string secretWord;
 	ll hashNum;
 	vector<char> symb;
+	vector<char> special;
 public:
 	StringHash(const string &_siteName);
 
