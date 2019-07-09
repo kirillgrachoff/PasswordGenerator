@@ -33,10 +33,14 @@ string StringHash::password() {
 		ans[i] = hash(ans[i], i);
 	}
 	forEach(ans) {
-		if (it % 2 == 0) {
-			it = symb[(it / 2) % symb.size()];
+		if (!special.empty()) {
+			if (it % 2 == 0) {
+				it = symb[(it / 2) % symb.size()];
+			} else {
+				it = special[(it / 2) % special.size()];
+			}
 		} else {
-			it = special[(it / 2) % special.size()];
+			it = symb[it % symb.size()];
 		}
 	}
 	return ans;
