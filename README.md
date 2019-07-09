@@ -9,7 +9,7 @@ password.txt's format:<br>
 1. `<your secret word>`(no spaces)<br>
 2. `<your secret number>` (number mod 2 == 1)<br>
 3. `<your special symbols>` (optional, no spaces)<br>
-1. next lines may be not empty
+1. next lines may be not empty **if special_symbols_string is not empty**
 
 example:
 ```
