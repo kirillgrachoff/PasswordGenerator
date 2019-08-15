@@ -13,7 +13,8 @@ char pow(char a, ll p) {
 	return ans;
 }
 
-StringHash::StringHash(const string &_siteName) {siteName = _siteName;
+StringHash::StringHash(const string &_siteName) {
+	siteName = _siteName;
 	ifstream fin("./password.txt");
 	string spec;
 	fin >> secretWord >> hashNum >> spec;
@@ -42,6 +43,31 @@ string StringHash::password() {
 		} else {
 			it = symb[it % symb.size()];
 		}
+	}
+	return ans;
+}
+
+ll StringHash::hash() {
+	ll ans = 0;
+	forEach(siteName) {
+		ans *= hashNum;
+		ans %= BASE;
+		ans += it;
+	}
+	return ans;
+}
+
+string StringHash::hex_hash() {
+	ll h = hash();
+	string ans;
+	while (h) {
+		ans.pb(h % 16);
+		h /= 16;
+	}
+	reverse(all(ans));
+	forEach(ans) {
+		if (it >= 0 && it <= 9) it += '0';
+		else it += 'a' - 10;
 	}
 	return ans;
 }

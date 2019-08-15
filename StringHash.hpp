@@ -23,8 +23,10 @@ class StringHash {
 	vector<char> special;
 public:
 	StringHash(const string &_siteName);
-
+	const ll BASE = 3000000019LL;
 	string password();
+	ll hash();
+	string hex_hash();
 
 	char hash(ll value, ll idx);
 };

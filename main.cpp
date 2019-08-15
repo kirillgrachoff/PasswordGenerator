@@ -10,6 +10,6 @@ int main() {
 	string s;
 	cin >> s;
 	StringHash stHsh(s);
-	cout << "\n" << stHsh.password() << "\n";
+	cout << "\n" << stHsh.password() << "\n" << stHsh.hex_hash() << "\n";
 	return 0;
 }
